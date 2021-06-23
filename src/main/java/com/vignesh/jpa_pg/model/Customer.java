@@ -10,7 +10,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(generator = "customerSeq")
-    @SequenceGenerator(name = "customerSeq", sequenceName = "customer_seq")
+    @SequenceGenerator(name = "customerSeq", sequenceName = "customer_seq",allocationSize = 1)
     //sequenceName is the actual name
     //name is the reference for generator
     private long customerId;
@@ -20,6 +20,6 @@ public class Customer {
     private String email;
     @Embedded
     private Address address;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
     private List<Order> orders;
 }

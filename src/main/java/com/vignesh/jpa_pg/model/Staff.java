@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Staff {
     @Id
     @GeneratedValue(generator = "staffSeq")
-    @SequenceGenerator(name = "staffSeq",sequenceName = "staff_seq")
+    @SequenceGenerator(name = "staffSeq",sequenceName = "staff_seq",allocationSize = 1)
     private long staffId;
     private String firstName;
     private String lastName;
@@ -17,9 +17,10 @@ public class Staff {
     private String email;
     @Column(columnDefinition = "INT(1)")
     private Boolean active;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
     private Store store;
-    @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private Staff manager;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "manager_id")
+//    private Staff manager;
 }

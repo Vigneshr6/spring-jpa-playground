@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 public class Category {
     @Id
     @GeneratedValue(generator = "categorySeq")
-    @SequenceGenerator(name = "categorySeq",sequenceName = "category_seq")
+    @SequenceGenerator(name = "categorySeq",sequenceName = "category_seq",allocationSize = 1)
     private long categoryId;
     private String categoryName;
 }

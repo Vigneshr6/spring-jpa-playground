@@ -10,18 +10,18 @@ import java.util.List;
 public class Store {
     @Id
     @GeneratedValue(generator = "storeSeq")
-    @SequenceGenerator(name = "storeSeq",sequenceName = "store_seq")
+    @SequenceGenerator(name = "storeSeq",sequenceName = "store_seq",allocationSize = 1)
     private long storeId;
     private String storeName;
     private String phone;
     private String email;
     @Embedded
     private Address address;
-    @OneToMany
+    @OneToMany(mappedBy = "store")
     private List<Staff> staffs;
-    @OneToMany
+    @OneToMany(mappedBy = "store")
     private List<Order> orders;
     @ManyToMany
-    @MapsId("storeId")
+    //@MapsId("storeId")
     private List<Stock> stocks;
 }
