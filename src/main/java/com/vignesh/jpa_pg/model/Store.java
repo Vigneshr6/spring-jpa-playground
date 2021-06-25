@@ -1,5 +1,7 @@
 package com.vignesh.jpa_pg.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,11 +19,14 @@ public class Store {
     private String email;
     @Embedded
     private Address address;
+    @JsonBackReference
     @OneToMany(mappedBy = "store")
     private List<Staff> staffs;
+    @JsonBackReference
     @OneToMany(mappedBy = "store")
     private List<Order> orders;
-    @ManyToMany
+    @JsonManagedReference
+    @OneToMany(mappedBy = "stockId.storeId")
     //@MapsId("storeId")
     private List<Stock> stocks;
 }

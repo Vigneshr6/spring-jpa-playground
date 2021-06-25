@@ -1,5 +1,6 @@
 package com.vignesh.jpa_pg.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.EmbeddedId;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 public class OrderItem {
     @EmbeddedId
     private OrderItemId id;
+    @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     //@MapsId("itemId")
     private Product product;
