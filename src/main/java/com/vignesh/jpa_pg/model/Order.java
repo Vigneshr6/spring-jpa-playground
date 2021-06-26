@@ -39,6 +39,6 @@ public class Order {
     private Staff staff;
     @JsonManagedReference
     @OneToMany
-    //@MapsId("orderId")
+    @JoinColumn(name = "order_id")
     private List<OrderItem> items;
 }

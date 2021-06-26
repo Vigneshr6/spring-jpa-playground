@@ -26,7 +26,6 @@ public class Store {
     @OneToMany(mappedBy = "store")
     private List<Order> orders;
     @JsonManagedReference
-    @OneToMany(mappedBy = "stockId.storeId")
-    //@MapsId("storeId")
+    @OneToMany(mappedBy = "stockId.store")
     private List<Stock> stocks;
 }

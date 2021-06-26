@@ -1,22 +1,18 @@
 package com.vignesh.jpa_pg.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@AssociationOverrides({
+        @AssociationOverride(name="orderItemId.order",joinColumns = @JoinColumn(name="order_id")),
+        @AssociationOverride(name="orderItemId.product",joinColumns = @JoinColumn(name="product_id"))
+})
 @Data
 public class OrderItem {
     @EmbeddedId
-    private OrderItemId id;
-    @JsonManagedReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    //@MapsId("itemId")
-    private Product product;
+    private OrderItemId orderItemId;
     private long quantity;
     private float listPrice;
     private float discount;

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -16,9 +15,11 @@ public class Product {
     private String productName;
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
-    private Brand band;
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="category_id")
     private Category category;
     private int modelYear;
     private float listPrice;

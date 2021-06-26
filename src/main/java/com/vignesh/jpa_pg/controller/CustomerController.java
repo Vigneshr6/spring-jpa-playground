@@ -31,6 +31,7 @@ public class CustomerController {
     public ResponseEntity getCustomer(@PathVariable long id) throws CustomerNotFoundException {
         try {
             Customer customer = customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException(id));
+            log.debug("fetch completed");
             return ResponseEntity.ok(customer);
         } catch (CustomerNotFoundException e) {
             return new ResponseEntity(NOT_FOUND);
