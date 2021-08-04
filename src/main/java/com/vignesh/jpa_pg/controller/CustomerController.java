@@ -61,4 +61,9 @@ public class CustomerController {
         customerRepository.deleteById(id);
         return new ResponseEntity(OK);
     }
+
+    @GetMapping(value = "/morethan2")
+    public List<Customer> getCustomersOrdersMoreThan2() {
+        return customerRepository.getCustomerWhoOrderMoreThan2();
+    }
 }
