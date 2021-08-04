@@ -66,4 +66,9 @@ public class CustomerController {
     public List<Customer> getCustomersOrdersMoreThan2() {
         return customerRepository.getCustomerWhoOrderMoreThan2();
     }
+
+    @GetMapping(value = "/first10")
+    public List<Customer> getCustomersByState(){
+        return customerRepository.getFirst10();
+    }
 }

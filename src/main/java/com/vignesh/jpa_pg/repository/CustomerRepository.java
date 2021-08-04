@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CustomerRepository extends CrudRepository<Customer,Long> {
+public interface CustomerRepository extends CrudRepository<Customer,Long>,CustomerRepositoryExt {
     @Query("SELECT c FROM Customer c JOIN c.orders GROUP BY c HAVING COUNT(c) > 2 ORDER BY c.customerId")
     public List<Customer> getCustomerWhoOrderMoreThan2();
 }
